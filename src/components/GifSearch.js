@@ -12,7 +12,7 @@ function GifSearch({ onSubmitImage, searchImage, setSearchImage}) {
   }
 
   return (
-    <div className="search-container">
+    <div className="search-container" style={{textAlign: 'center'}}>
       <form onSubmit={handleSubmitClick}>
         <h3>Search Giphy</h3>
         <input

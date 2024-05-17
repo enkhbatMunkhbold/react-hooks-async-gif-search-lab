@@ -1,11 +1,17 @@
 import React from "react";
 
-function GifList({ images }) {
-  // console.log(images)
-  const displayImages = images.map(image => <li>{image}</li>)
+function GifList({ images, searchImage }) {
+
+  const displayImages = images.map(image =>{ 
+    return (
+      <li key={image.id} style={{margin: '5px'}}>
+        <img src={image.images.original.url} alt={searchImage}/>
+      </li>
+    )    
+  })
 
   return (
-    <ul>
+    <ul style={{marginBottom: '30px'}}>
       {displayImages}
     </ul>
   )

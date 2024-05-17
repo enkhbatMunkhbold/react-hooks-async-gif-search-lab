@@ -7,13 +7,13 @@ function GifListContainer() {
   const [ images, setImages ] = useState([])
   const [ searchImage, setSearchImage ] = useState('')
 
-  const myKey = 'gAiYh9cOxs6wQMLBfmkd3Vb82LRezEP2'
+  const myKey = '08Wiz2SOhJefs4ClySPLaEG6mcmprJkk'
 
   function handleSubmitImage() {
     fetch(`https://api.giphy.com/v1/gifs/search?q=${searchImage}&api_key=${myKey}&rating=g`)
     .then(res => res.json())
     .then(imageData => { 
-      const giphies = imageData.slice(0, 3)
+      const giphies = imageData.data.slice(0, 3)
       setImages(giphies)
     })
     setSearchImage('')
@@ -21,12 +21,12 @@ function GifListContainer() {
 
   return (
     <div>
-      <GifList images={images}/>
       <GifSearch 
         onSubmitImage={handleSubmitImage} 
         searchImage={searchImage} 
         setSearchImage={setSearchImage}
       />
+      <GifList images={images} searchImage={searchImage}/>
     </div>    
   )
 }
